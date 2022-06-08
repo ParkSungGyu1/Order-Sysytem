@@ -15,14 +15,14 @@ import java.util.List;
 @Table(name = "orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // protected로 생성자 만들기
 public class Order {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
     private Long id;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    private int totalprice;
+    private int totalPrice;
 
     //==연관관계 메서드==//
     public void addOrderItem(OrderItem orderItem) {
@@ -31,15 +31,15 @@ public class Order {
     }
 
     //==생성 메서드==//
-    public static Order createOrder(OrderItem... orderItems){
+    public static Order createOrder(int deliveryFee, List<OrderItem> orderItems){
         Order order = new Order();
         int price = 0;
         for(OrderItem orderItem : orderItems){
             order.addOrderItem(orderItem);
-            price += orderItem.getOrderprice();
+            price += orderItem.getOrderPrice();
         }
 
-        order.setTotalprice(price);
+        order.setTotalPrice(price+deliveryFee);
         return order;
     }
 }

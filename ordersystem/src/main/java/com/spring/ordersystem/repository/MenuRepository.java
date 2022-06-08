@@ -2,7 +2,6 @@ package com.spring.ordersystem.repository;
 
 
 import com.spring.ordersystem.model.Menu;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +22,9 @@ public class MenuRepository {
         return em.createQuery("select m from Menu m where m.restaurant.id = :restaurantId", Menu.class)
                 .setParameter("restaurantId", restaurantId)
                 .getResultList();
+    }
+
+    public Menu findOne(Long menuId){
+        return em.find(Menu.class, menuId);
     }
 }

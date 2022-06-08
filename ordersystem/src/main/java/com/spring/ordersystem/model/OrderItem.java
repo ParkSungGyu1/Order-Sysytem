@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // protected로 생성자 만들기
 public class OrderItem {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_item_id")
     private Long id;
 
@@ -27,13 +27,13 @@ public class OrderItem {
     private Menu menu;
 
     private int quantity;
-    private int orderprice;
+    private int orderPrice;
 
     //==생성 메서드==//
-    public static OrderItem createOrderItem(Menu menu, int foodprice, int quantity){
+    public static OrderItem createOrderItem(Menu menu, int foodPrice, int quantity){
         OrderItem orderItem = new OrderItem();
         orderItem.setMenu(menu);
-        orderItem.setOrderprice(foodprice*quantity);
+        orderItem.setOrderPrice(foodPrice*quantity);
         orderItem.setQuantity(quantity);
         return orderItem;
     }

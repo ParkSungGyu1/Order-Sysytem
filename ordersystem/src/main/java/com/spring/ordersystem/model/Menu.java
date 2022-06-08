@@ -23,12 +23,13 @@ public class Menu {
     private Restaurant restaurant;
 
     private String foodName;
-    private String foodprice;
+    private int foodPrice;
 
     //==생성 메서드==//
-    public static Menu createMenu(String foodName, String foodprice){
+    public static Menu createMenu(Restaurant restaurant, String foodName, int foodPrice){
         Menu menu = new Menu();
-        menu.setFoodprice(foodprice);
+        menu.setRestaurant(restaurant);
+        menu.setFoodPrice(foodPrice);
         menu.setFoodName(foodName);
         return menu;
     }

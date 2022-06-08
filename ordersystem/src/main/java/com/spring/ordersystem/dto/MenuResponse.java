@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MenuRegisterDto {
-    private Long restaurantId;
+public class MenuResponse {
+    private Long id;
     private String name;
     private int price;
 }

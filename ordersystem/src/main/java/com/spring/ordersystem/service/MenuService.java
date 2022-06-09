@@ -25,7 +25,7 @@ public class MenuService {
         Restaurant restaurant = restaurantRepository.findOne(restaurantId);
         for(MenuRegisterDto menuRegister:menuRegisters){
             Menu menu = Menu.createMenu(restaurant,menuRegister.getName(), menuRegister.getPrice());
-            Menu byName = menuRepository.findByName(menu.getFoodName());
+            Menu byName = menuRepository.findByName(menu.getFoodName(), restaurantId);
             if (byName == null){
                 menuRepository.save(menu);
             }else {

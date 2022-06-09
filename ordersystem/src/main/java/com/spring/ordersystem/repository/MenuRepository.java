@@ -29,10 +29,11 @@ public class MenuRepository {
         return em.find(Menu.class, menuId);
     }
 
-    public Menu findByName(String menuName){
+    public Menu findByName(String menuName, Long restaurantId){
         try {
-            return em.createQuery(" select  m from Menu m where m.foodName = :menuName",Menu.class)
+            return em.createQuery(" select  m from Menu m where m.foodName = :menuName and m.restaurant.id = :restaurantId",Menu.class)
                     .setParameter("menuName", menuName)
+                    .setParameter("restaurantId", restaurantId)
                     .getSingleResult();
         }catch (NoResultException e){
             return null;

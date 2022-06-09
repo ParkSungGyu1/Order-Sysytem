@@ -25,7 +25,13 @@ public class MenuService {
         Restaurant restaurant = restaurantRepository.findOne(restaurantId);
         for(MenuRegisterDto menuRegister:menuRegisters){
             Menu menu = Menu.createMenu(restaurant,menuRegister.getName(), menuRegister.getPrice());
-            menuRepository.save(menu);
+            Menu byName = menuRepository.findByName(menu.getFoodName());
+            if (byName == null){
+                menuRepository.save(menu);
+            }else {
+                throw new IllegalArgumentException("해당 메뉴가 존재합니다.");
+            }
+
         }
     }
 

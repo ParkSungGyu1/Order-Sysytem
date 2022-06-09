@@ -7,18 +7,21 @@ import com.spring.ordersystem.model.Menu;
 import com.spring.ordersystem.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Validated
 @RestController
 @RequiredArgsConstructor
 public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/restaurant/{restaurantId}/food/register")
-    public void save(@RequestBody List<MenuRegisterDto> menuRegisters, @PathVariable Long restaurantId){
+    public void save(@RequestBody @Valid List<MenuRegisterDto> menuRegisters, @PathVariable Long restaurantId){
         menuService.save(menuRegisters, restaurantId);
     }
 

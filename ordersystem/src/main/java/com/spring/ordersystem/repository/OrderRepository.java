@@ -3,8 +3,6 @@ package com.spring.ordersystem.repository;
 import com.spring.ordersystem.dto.OrderResponse;
 import com.spring.ordersystem.dto.OrderResponseDto;
 import com.spring.ordersystem.model.Order;
-import com.spring.ordersystem.model.OrderItem;
-import com.spring.ordersystem.model.Restaurant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -18,7 +18,6 @@ public class MenuService {
     private final MenuRepository menuRepository;
     private final RestaurantRepository restaurantRepository;
 
-
     //메뉴 저장
     @Transactional
     public void save(List<MenuRegisterDto> menuRegisters, Long restaurantId) {
@@ -34,7 +33,6 @@ public class MenuService {
 
         }
     }
-
     //메뉴 조회
     public List<Menu> findAll(Long restaurantId){
         return menuRepository.findAll(restaurantId);

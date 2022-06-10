@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED) // protected로 생성자 만들기
 public class Order {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
 
